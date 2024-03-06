@@ -12,8 +12,11 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// connect process.env.PORT
+const port = process.env.PORT || 3000;
+
 // mongoose connect
-const uri = "mongodb+srv://admin-muchsin:test123@cluster0.2va5q3b.mongodb.net/todolistDB";
+const uri = "mongodb+srv://admin-muchsin:stealth@cluster0.2va5q3b.mongodb.net/todolistDB";
 
 // mongoose create schema
 const itemsSchema = new mongoose.Schema({
@@ -132,7 +135,7 @@ app.post("/delete", function (req, res) {
   }
 });
 
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log("Server started on port 3000");
   mongoose.connect(uri);
 });
